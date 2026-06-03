@@ -18,14 +18,14 @@ jobs:
        id-token: write
        contents: read
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4  # Fixed: Future-proof Node.js version
         with:
-          submodules: true
+          submodules: false        # Fixed: Disabled submodule checking
           lfs: false
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
       - name: Get Id Token
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7  # Fixed: Future-proof Node.js version
         id: idtoken
         with:
            script: |
@@ -38,11 +38,10 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WHITE_MOSS_0DADF9000 }}
           action: "upload"
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/frontend" # App source code path
-          api_location: "" # Api source code path - optional
-          output_location: "next.config.js" # Built app content directory - optional
+          ###### Repository/Build Configurations ######
+          app_location: "/frontend" 
+          api_location: "" 
+          output_location: ""      # Fixed: Left blank so Azure auto-detects Next.js output folder
           github_id_token: ${{ steps.idtoken.outputs.result }}
           ###### End of Repository/Build Configurations ######
 
