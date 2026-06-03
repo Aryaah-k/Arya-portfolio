@@ -22,7 +22,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-&i9#vadc)...')
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 # Setup valid hosts for Railway and local development
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.azurewebsites.net']
 
 # Railway automatically injects RAILWAY_PUBLIC_DOMAIN when a domain is generated
 # Azure App Service automatically injects WEBSITE_HOSTNAME when deployed
