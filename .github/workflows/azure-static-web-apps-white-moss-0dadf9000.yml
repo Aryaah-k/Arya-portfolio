@@ -37,10 +37,11 @@ jobs:
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WHITE_MOSS_0DADF9000 }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_... }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           ###### Repository/Build Configurations ######
-          app_location: "frontend" 
+          app_location: "/frontend" 
           api_location: "" 
           output_location: ""      # Fixed: Left blank so Azure auto-detects Next.js output folder
           github_id_token: ${{ steps.idtoken.outputs.result }}
