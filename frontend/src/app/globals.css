@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/* ================= BASE ================= */
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /* FIXED: Removed raw solid background to prevent stacking overrides */
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ================= ANIMATED GRADIENT LAYER ================= */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    /* FIXED: Lowered to -60 so it always sits safely beneath everything else */
+    z-index: -60;
+
+    /* Combining a solid black baseline directly into the background stack */
+    background: linear-gradient(120deg,
+            #000000,
+            #050505,
+            #0c0c14,
+            #000000);
+
+    background-size: 300% 300%;
+    animation: bgMove 25s ease infinite;
+    opacity: 1;
+}
+
+/* ================= SOFT GLOW NOISE LAYER ================= */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    /* FIXED: Set to -55 so it casts glow textures on top of the base animation */
+    z-index: -55;
+
+    background: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.12), transparent 45%),
+        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.08), transparent 45%);
+
+    filter: blur(50px);
+    pointer-events: none;
+}
+
+/* ================= BACKGROUND ANIMATION ================= */
+@keyframes bgMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ================= FLOAT ANIMATIONS ================= */
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(80px, 60px) scale(1.1);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes float2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-90px, -70px) scale(1.15);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes float3 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(60px, -90px) scale(1.2);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
