@@ -19,7 +19,7 @@ export default function Certificates() {
     const fetchCertificates = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/certificates/`
+          `${process.env.NEXT_PUBLIC_API_URL}/api/certificates/`
         );
         const data = await res.json();
         setCertificates(data);

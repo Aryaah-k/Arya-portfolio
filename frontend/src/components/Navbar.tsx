@@ -17,10 +17,10 @@ export default function Navbar() {
     { name: "Certificates", href: "/certificates" },
 
     // Option A: Pointing directly to your Django backend superuser admin panel
-{
-  name: "Admin",
-  href: `${process.env.NEXT_PUBLIC_API_URL}/admin/`,
-},
+    {
+      name: "Admin",
+      href: `${process.env.NEXT_PUBLIC_API_URL}/admin/`,
+    },
     // Option B: If you have a local Next.js page instead, uncomment the line below and remove the one above:
     // { name: "Admin", href: "/admin" }, 
     { name: "Contact", href: "/contact" },
