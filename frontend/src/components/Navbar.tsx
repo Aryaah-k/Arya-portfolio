@@ -19,7 +19,7 @@ export default function Navbar() {
     // Option A: Pointing directly to your Django backend superuser admin panel
     {
       name: "Admin",
-      href: `${process.env.NEXT_PUBLIC_API_URL}/admin/`,
+      href: `${process.env.NEXT_PUBLIC_API_URL || "https://arya-portfolio-backend-d4hmfqbjfpfrb2dv.southindia-01.azurewebsites.net"}/admin/`,
     },
     // Option B: If you have a local Next.js page instead, uncomment the line below and remove the one above:
     // { name: "Admin", href: "/admin" }, 

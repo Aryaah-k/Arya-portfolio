@@ -19,7 +19,7 @@ export default function Projects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects/`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://arya-portfolio-backend-d4hmfqbjfpfrb2dv.southindia-01.azurewebsites.net"}/api/projects/`);
         const data = await res.json();
         setProjects(data);
       } catch (err) {

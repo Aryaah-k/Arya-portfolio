@@ -40,7 +40,7 @@ const fallbackProjects: Record<string, ProjectDetail> = {
 
 async function getProject(slug: string) {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects/${slug}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://arya-portfolio-backend-d4hmfqbjfpfrb2dv.southindia-01.azurewebsites.net"}/api/projects/${slug}`, {
             // Next.js caching options
             next: { revalidate: 60 },
         });
