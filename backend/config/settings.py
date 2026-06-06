@@ -32,6 +32,14 @@ if AZURE_PUBLIC_DOMAIN:
     # Also add a wildcard subdomain fallback if you use custom domains later
     ALLOWED_HOSTS.append(f".{AZURE_PUBLIC_DOMAIN}")
 
+# CSRF Trusted Origins for Admin panel
+CSRF_TRUSTED_ORIGINS = [
+    "https://arya-portfolio-backend-d4hmfqbjfpfrb2dv.southindia-01.azurewebsites.net",
+    "http://localhost:3000",
+]
+if AZURE_PUBLIC_DOMAIN:
+    CSRF_TRUSTED_ORIGINS.append(f"https://{AZURE_PUBLIC_DOMAIN}")
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -145,3 +153,10 @@ AUTH_USER_MODEL = 'users.User'
 # ================= SESSION SECURITY =================
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 900
+
+# ================= AZURE & PRODUCTION SETTINGS =================
+# Tell Django it's behind a proxy that handles HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Prevent 500 errors if a referenced static file is missing in production
+WHITENOISE_MANIFEST_STRICT = False
